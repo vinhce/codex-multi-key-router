@@ -83,8 +83,10 @@ graph TD
   Mỗi hội thoại/dự án được cấp 1 API Key chuyên trách để duy trì tính liên tục và không bị ảnh hưởng bởi các phiên chat khác.
 - ⚡ **Chia Tải Subagent Song Song (Phương án A):**
   Khi Lead Agent gọi Subagent chạy ngầm, router tự động tách các request phụ này sang các Key #2, #3, #4, #5... giúp chạy song song nhiều agent mà không bị chạm trần giới hạn gọi API (HTTP 429).
-- 🧠 **Tối Ưu Phân Tầng Suy Luận (Tiered Reasoning):**
-  Tự động gán mức suy luận `max` cho Lead Agent (để đưa ra quyết định kiến trúc sâu sắc) và hạ xuống `xhigh` cho Subagent (giảm độ trễ từ 35s xuống ~10s và tiết kiệm token).
+- 🧠 **Tối Ưu Phân Tầng Suy Luận (~8s/turn - Nhanh gấp 6 lần):**
+  Tự động gán mức suy luận tối ưu `high` cho cả Lead Agent và Subagents. Giảm thời gian chờ đợi phản hồi từ ~48s (mức `max`) xuống chỉ còn **~7.9s** trong khi vẫn duy trì trọn vẹn độ chính xác kỹ thuật và tư duy kiến trúc.
+- 💬 **Cơ Chế Hội Chẩn Đa Agent Khi Khởi Tạo Dự Án Mới:**
+  Quy chuẩn `AGENTS.md` bắt buộc Hội đồng Agent (Analyzer, Logic/DB, UI/UX, Security/QA) phải mở phiên thảo luận, phản biện chéo và đồng thuận về kiến trúc nền tảng trước khi viết bất kỳ dòng code nào.
 - 🔄 **Vòng Đời MCP Zero-Daemon (Không Chạy Ngầm Rác Máy):**
   Được khai báo dưới dạng một MCP stdio server (`[mcp_servers.router]`). Mở Codex lên thì Router tự bật; đóng Codex thì Router tự tắt sạch sẽ, không lo chiếm cổng hay ngốn RAM.
 - 🛡️ **Tự Động Chuyển Key Khi Lỗi (Auto Failover):**

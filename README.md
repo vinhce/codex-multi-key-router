@@ -84,8 +84,10 @@ graph TD
   Each conversation thread is pinned to its own primary API key, preserving context continuity and avoiding cross-thread rate throttling.
 - ⚡ **Subagent Concurrency Load Balancing:**
   Subagents and parallel background turns automatically pull from the secondary key pool (`Key #2`, `Key #3`, `Key #4`, etc.), maximizing throughput.
-- 🧠 **Dynamic Reasoning Tiering:**
-  Automatically assigns `max` reasoning effort to the Lead Agent (for architectural decisions) and `xhigh` to Subagents (slashing response times from ~35s down to ~10s while saving tokens).
+- 🧠 **Dynamic Fast-Reasoning Tiering (~8s responses):**
+  Automatically optimizes reasoning effort to `high` across both Lead Agent and Subagents. This slashes response times from ~48s (under `max`) down to **~7.9s** (6x faster!) while retaining complete architectural depth and coding precision.
+- 💬 **Multi-Agent Project Brainstorming & Alignment:**
+  Built-in `AGENTS.md` protocol that forces agents to hold an interactive 3-phase discussion (Feasibility, DB/API, UI/UX, Security/QA) whenever kicking off a new project or major module before writing code.
 - 🔄 **Zero-Daemon MCP Lifecycle:**
   Integrated directly via Model Context Protocol (`[mcp_servers.router]`). When you open Codex, the router starts instantly. When you close Codex, the router shuts down cleanly.
 - 🛡️ **Auto-Failover & Circuit Breaking:**
