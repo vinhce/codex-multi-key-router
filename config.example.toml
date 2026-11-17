@@ -1,0 +1,13 @@
+model_provider = "OpenAI"
+model = "gpt-6.1-sol"
+review_model = "gpt-6.1-sol"
+model_reasoning_effort = "max"
+
+[model_providers.OpenAI]
+name = "OpenAI"
+base_url = "http://127.0.0.1:5050/v1"
+model_catalog_url = "http://127.0.0.1:5050/v1/models"
+wire_api = "responses"
+requires_openai_auth = false
+experimental_bearer_token = "sk-your-first-api-key-here"
+http_headers = { "x-openai-actor-authorization" = "local-image-extension" }
